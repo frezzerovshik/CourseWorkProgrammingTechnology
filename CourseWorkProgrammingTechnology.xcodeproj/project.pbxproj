@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		323C5D00241834B6009DEB55 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 323C5CFF241834B6009DEB55 /* main.cpp */; };
+		323C5D1524195A5B009DEB55 /* User.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 323C5D1324195A5B009DEB55 /* User.cpp */; };
+		323C5D1824195CD1009DEB55 /* Games.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 323C5D1624195CD1009DEB55 /* Games.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,6 +29,13 @@
 		323C5CFF241834B6009DEB55 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		323C5D0624183656009DEB55 /* Country.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Country.h; sourceTree = "<group>"; };
 		323C5D0A24183750009DEB55 /* Sports.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Sports.h; sourceTree = "<group>"; };
+		323C5D0C24183806009DEB55 /* Sportsman.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Sportsman.hpp; sourceTree = "<group>"; };
+		323C5D11241958E0009DEB55 /* Observer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Observer.h; sourceTree = "<group>"; };
+		323C5D1224195921009DEB55 /* Subject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Subject.h; sourceTree = "<group>"; };
+		323C5D1324195A5B009DEB55 /* User.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = User.cpp; sourceTree = "<group>"; };
+		323C5D1424195A5B009DEB55 /* User.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = User.hpp; sourceTree = "<group>"; };
+		323C5D1624195CD1009DEB55 /* Games.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Games.cpp; sourceTree = "<group>"; };
+		323C5D1724195CD1009DEB55 /* Games.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Games.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,11 +68,42 @@
 		323C5CFE241834B6009DEB55 /* CourseWorkProgrammingTechnology */ = {
 			isa = PBXGroup;
 			children = (
+				323C5D1B24195E69009DEB55 /* Types */,
+				323C5D1A24195E48009DEB55 /* Observer */,
+				323C5D1924195E2F009DEB55 /* Subject */,
 				323C5CFF241834B6009DEB55 /* main.cpp */,
-				323C5D0624183656009DEB55 /* Country.h */,
-				323C5D0A24183750009DEB55 /* Sports.h */,
 			);
 			path = CourseWorkProgrammingTechnology;
+			sourceTree = "<group>";
+		};
+		323C5D1924195E2F009DEB55 /* Subject */ = {
+			isa = PBXGroup;
+			children = (
+				323C5D1624195CD1009DEB55 /* Games.cpp */,
+				323C5D1724195CD1009DEB55 /* Games.hpp */,
+				323C5D1224195921009DEB55 /* Subject.h */,
+			);
+			name = Subject;
+			sourceTree = "<group>";
+		};
+		323C5D1A24195E48009DEB55 /* Observer */ = {
+			isa = PBXGroup;
+			children = (
+				323C5D1324195A5B009DEB55 /* User.cpp */,
+				323C5D1424195A5B009DEB55 /* User.hpp */,
+				323C5D11241958E0009DEB55 /* Observer.h */,
+			);
+			name = Observer;
+			sourceTree = "<group>";
+		};
+		323C5D1B24195E69009DEB55 /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				323C5D0624183656009DEB55 /* Country.h */,
+				323C5D0A24183750009DEB55 /* Sports.h */,
+				323C5D0C24183806009DEB55 /* Sportsman.hpp */,
+			);
+			name = Types;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,7 +163,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				323C5D1524195A5B009DEB55 /* User.cpp in Sources */,
 				323C5D00241834B6009DEB55 /* main.cpp in Sources */,
+				323C5D1824195CD1009DEB55 /* Games.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
