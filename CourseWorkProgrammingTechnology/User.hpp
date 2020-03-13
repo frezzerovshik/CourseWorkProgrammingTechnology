@@ -15,6 +15,7 @@ class User : public Observer {
     User();
 public:
     User(Subject* followingObject);
+    void makeBubble(Subject* followingObject);
     ~User();
-    void update() override;
+    void update(Notify* newNotify) override;
 };

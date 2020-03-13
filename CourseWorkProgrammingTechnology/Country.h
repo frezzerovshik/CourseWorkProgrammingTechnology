@@ -1,5 +1,5 @@
 //
-//  Types.h
+//  Country.h
 //  CourseWorkProgrammingTechnology
 //
 //  Created by Артем Шарапов on 10.03.2020.

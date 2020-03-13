@@ -10,19 +10,13 @@
 #include "Country.h"
 #include "Sports.h"
 #include <vector>
+#include "Types.h"
 #include "Observer.h"
 
-class Shell {
-public:
-    Observer* observerObject;
-    Country choosenCountry;
-    Sports choosenSport;
-};
-
 class Subject {
-    std::vector<Shell> listOfObservers;
 public:
-    virtual void notifyObservers() = 0;
-    virtual void registerObserver(Observer* newObserver) = 0;
-    virtual void unsubObserver(Observer* wantToLeave) = 0;
+    std::vector<Shell*> listOfObservers;
+    virtual void notifyObservers(Notify newNotify) = 0;
+    virtual void registerObserver(Shell* newObserver) = 0;
+    virtual void unsubObserver(Country countryKey , Sports sportsKey , Observer* user) = 0;
 };

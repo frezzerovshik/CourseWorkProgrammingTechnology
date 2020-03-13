@@ -16,8 +16,9 @@ class Games : Subject {
 public:
     Games();
     ~Games();
-    void notifyObservers() override;
-    void unsubObserver(Observer *wantToLeave) override;
-    void registerObserver(Observer *newObserver) override;
+    void notifyObservers(Notify newNotify) override;
+    void unsubObserver(Country countryKey , Sports sportsKey , Observer* user) override;
+    void registerObserver(Shell *newObserver) override;
+    void competitions();
 };
 
