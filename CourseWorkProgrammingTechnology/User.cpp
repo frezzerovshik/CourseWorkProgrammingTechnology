@@ -28,7 +28,7 @@ User :: User(Subject* followingSubject) {
         makeBubble(followingSubject);
         cout << "Повторить действие? 1 - Да 2 - Нет" << endl;
         cin >> ask;
-        if (ask == '1')
+        if (ask == '2')
             break;
     }
 }

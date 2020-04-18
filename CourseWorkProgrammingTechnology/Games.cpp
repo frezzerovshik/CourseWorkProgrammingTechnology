@@ -9,6 +9,7 @@
 #include "Games.hpp"
 #include <iostream>
 #include <fstream>
+#include <string>
 #include <unistd.h>
 #include "MyException.h"
 
@@ -173,13 +174,13 @@ void Games::figureSkiing() {
 }
 
 Games:: Games() {
-	ifstream input("Sportsman.txt");
+	ifstream input("/Users/frez2zerovshik/Documents/Универ/Третий курс/6 семестр/CourseWorkProgrammingTechnology/CourseWorkProgrammingTechnology/Sportsman.txt");
 	string config;
 	Sportsman bubbleGuy;
 	string kindOfSports;
 	string country;
     MyException exception;
-	input >> config;
+	getline(input, config);
 	int numberOfSportsmans = atoi(config.c_str());
 
 	if (!input.is_open()) {
@@ -189,15 +190,15 @@ Games:: Games() {
     if (numberOfSportsmans == 0) {
         throw exception.emptyFile();
     }
-    for (int i = 0;i < NUM_OF_LINES * numberOfSportsmans;++i) {
+    for (int i = 0;i < numberOfSportsmans;++i) {
         if(!input.eof()) {
-            input >> bubbleGuy.agility;
-            input >> kindOfSports;
-            input >> bubbleGuy.luck;
-            input >> bubbleGuy.name;
-            input >> bubbleGuy.stamina;
-            input >> bubbleGuy.strenght;
-            input >> country;
+            getline(input, bubbleGuy.agility);
+            getline(input, kindOfSports);
+            getline(input, bubbleGuy.luck);
+            getline(input, bubbleGuy.name);
+            getline(input, bubbleGuy.stamina);
+            getline(input, bubbleGuy.strenght);
+            getline(input, country);
 
             if (kindOfSports == "Biatlon") {
                 bubbleGuy.kindOfSports = Sports::Biatlon;
@@ -245,6 +246,10 @@ Games:: Games() {
         }
 	} //for
 	input.close();
+    cout << "Число соревнующихся " << competitors.size() << endl;
+    for (vector<Sportsman>::iterator it = competitors.begin(); it <= competitors.end(); it++) {
+        cout << (*it).name << endl;
+    }
 }
 Games:: ~Games() {
     // Пустая реализация

@@ -9,20 +9,37 @@
 #include <iostream>
 #include "Games.hpp"
 #include "User.hpp"
+#include "MyException.h"
 
 using namespace std;
 
 int main(int argc, const char * argv[]) {
-	bool flag = true;
-	while (flag) {
-		Games* olympicGames = new Games;
-		User user(olympicGames);
-		olympicGames->competitions();
-		cout << "Stop?" << endl;
-		char c;
-		cin >> c;
-		if (c == '1')
-			break;
-	}
+    try {
+        Games olympicGames;
+        User observer(&olympicGames);
+        olympicGames.competitions();
+        cout << " Прервать работы основного сценария? 1 - да, 2 - нет" << endl;
+    }
+    catch (int errorCode) {
+        switch (errorCode) {
+            case EMPTY_FILE: {
+                cout << "Вызвано исключение: файл, содержащий информацию о спортсменах пуст" << endl;
+                break;
+            }
+            case WRONG_COUNTRY: {
+                cout << "Вызвано исключение: ошибка при формирование уведомления (неопределенное значение страны)" << endl;
+                break;
+            }
+            case WRONG_SPORTS: {
+                cout << "Вызвано исключение: ошибка при формирование уведомления (неопределенное значение вида спорта)" << endl;
+                break;
+            }
+            default: {
+                cout << "Вызвано системное исключение" << endl;
+                break;
+            }
+        }
+    }
+    
     return 0;
 }
