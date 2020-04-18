@@ -18,7 +18,6 @@ int main(int argc, const char * argv[]) {
         Games olympicGames;
         User observer(&olympicGames);
         olympicGames.competitions();
-        cout << " Прервать работы основного сценария? 1 - да, 2 - нет" << endl;
     }
     catch (int errorCode) {
         switch (errorCode) {

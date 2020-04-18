@@ -20,7 +20,10 @@ using namespace std;
 
 void Games:: notifyObservers(Notify newNotify) {
     for (int i = 0 ; i < listOfObservers.size(); ++i) {
-        listOfObservers[i]->observerObject->update(&newNotify);
+        if (newNotify.country == listOfObservers[i]->choosenCountry &&
+            newNotify.sport == listOfObservers[i]->choosenSport) {
+            listOfObservers[i]->observerObject->update(&newNotify);
+        }
     }
 }
 
@@ -246,10 +249,8 @@ Games:: Games() {
         }
 	} //for
 	input.close();
-    cout << "Число соревнующихся " << competitors.size() << endl;
-    for (vector<Sportsman>::iterator it = competitors.begin(); it <= competitors.end(); it++) {
-        cout << (*it).name << endl;
-    }
+    cout << "Число соревнующихся: " << competitors.size() << endl;
+    cout << "Считанная из файла конфигурация: " << config << endl;
 }
 Games:: ~Games() {
     // Пустая реализация
