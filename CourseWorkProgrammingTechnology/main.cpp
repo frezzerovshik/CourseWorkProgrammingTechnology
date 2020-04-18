@@ -7,9 +7,22 @@
 //
 
 #include <iostream>
+#include "Games.hpp"
+#include "User.hpp"
+
+using namespace std;
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+	bool flag = true;
+	while (flag) {
+		Games* olympicGames = new Games;
+		User user(olympicGames);
+		olympicGames->competitions();
+		cout << "Stop?" << endl;
+		char c;
+		cin >> c;
+		if (c == '1')
+			break;
+	}
     return 0;
 }

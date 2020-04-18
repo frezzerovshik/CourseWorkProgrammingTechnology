@@ -11,14 +11,21 @@
 #include "Subject.h"
 #include "Sportsman.hpp"
 
-class Games : Subject {
+class Games : public Subject {
     std::vector<Sportsman> competitors;
 public:
     Games();
     ~Games();
-    void notifyObservers(Notify newNotify) override;
-    void unsubObserver(Country countryKey , Sports sportsKey , Observer* user) override;
-    void registerObserver(Shell *newObserver) override;
-    void competitions();
+    
+	void notifyObservers(Notify newNotify);
+    void unsubObserver(Country countryKey , Sports sportsKey , Observer* user);
+    void registerObserver(Shell *newObserver);
+    
+	void competitions();
+	
+	void biatlon();
+	void skeleton();
+	void skies();
+	void figureSkiing();
 };
 

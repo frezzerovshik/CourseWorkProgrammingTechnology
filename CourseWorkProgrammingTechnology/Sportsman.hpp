@@ -16,8 +16,8 @@ public:
     Country whereFrom;
     Sports kindOfSports;
     std::string name;
-    unsigned int strenght;
-    unsigned int agility;
-    unsigned int luck;
-    unsigned int stamina;
+    unsigned int strenght; //Сила
+    unsigned int agility;  //Ловкость
+    unsigned int luck;	   //Удача
+    unsigned int stamina;  //Выносливость
 };

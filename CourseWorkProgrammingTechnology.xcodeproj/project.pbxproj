@@ -37,6 +37,7 @@
 		323C5D1624195CD1009DEB55 /* Games.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Games.cpp; sourceTree = "<group>"; };
 		323C5D1724195CD1009DEB55 /* Games.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Games.hpp; sourceTree = "<group>"; };
 		323C5D1C241A43A5009DEB55 /* Types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Types.h; sourceTree = "<group>"; };
+		328EF24F244A92420087F4FE /* MyException.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyException.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +101,7 @@
 		323C5D1B24195E69009DEB55 /* Types */ = {
 			isa = PBXGroup;
 			children = (
+				328EF24F244A92420087F4FE /* MyException.h */,
 				323C5D0624183656009DEB55 /* Country.h */,
 				323C5D0A24183750009DEB55 /* Sports.h */,
 				323C5D0C24183806009DEB55 /* Sportsman.hpp */,

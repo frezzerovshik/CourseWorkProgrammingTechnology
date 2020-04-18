@@ -11,5 +11,5 @@ class Notify;
 
 class Observer {
 public:
-    virtual void update(Notify newNotify) = 0;
+    virtual void update(Notify* newNotify) = 0;
 };

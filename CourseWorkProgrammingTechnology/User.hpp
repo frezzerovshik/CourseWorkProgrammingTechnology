@@ -12,10 +12,10 @@
 #include "Country.h"
 
 class User : public Observer {
-    User();
 public:
+	User();
     User(Subject* followingObject);
     void makeBubble(Subject* followingObject);
     ~User();
-    void update(Notify* newNotify) override;
+    void update(Notify* newNotify);
 };

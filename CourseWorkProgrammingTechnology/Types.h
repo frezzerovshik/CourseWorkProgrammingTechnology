@@ -11,9 +11,10 @@
 
 class Notify {
 public:
-    std::string country;
-    std::string sport;
+    Country country;
+    Sports sport;
     std::string place;
+	std::string name;
 };
 
 class Shell {

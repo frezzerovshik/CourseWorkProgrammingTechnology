@@ -8,9 +8,15 @@
 
 #include "User.hpp"
 #include "Types.h"
+#include <string>
 #include <iostream>
+#include "MyException.h"
 
 using namespace std;
+
+User::~User() {
+	//Пустая реализация
+}
 
 User :: User() {
     // Пустая реализация
@@ -26,6 +32,7 @@ User :: User(Subject* followingSubject) {
             break;
     }
 }
+
 void User::makeBubble(Subject* followingSubject) {
      char choosenCountry{};
      char choosenSport{};
@@ -78,6 +85,47 @@ void User::makeBubble(Subject* followingSubject) {
      followingSubject->registerObserver(bubble);
 }
 
-void User::update(Notify* newNotify) {
-    cout << "Новое уведомление: " << endl << "Спортсмен из " << newNotify->country << " занял " << newNotify->place << " место по " << newNotify->sport << endl;
+string countryToString(Country country) {
+	switch (country) {
+	case Country::Russia:
+		return "России";
+	case Country::Japan:
+		return "Японии";
+	case Country::France:
+		return "Франции";
+	case Country::Finland:
+		return "Финляндии";
+	case Country::Canada:
+		return "Канады";
+	default:
+		break;
+	}
+    MyException exception;
+    throw exception.wrongCountry();
 }
+
+string sportsToString(Sports sport) {
+	switch (sport) {
+	case Sports::Biatlon:
+		return "биатлону";
+		break;
+	case Sports::Skeleton:
+		return "скелетону";
+		break;
+	case Sports::Skies:
+		return "конькобежному спорту";
+		break;
+	case Sports::FigureSkiing:
+		return "фигурному катанию";
+		break;
+	default:
+		break;
+	}
+    MyException exception;
+	throw exception.wrongSports();
+}
+
+void User::update(Notify* newNotify) {
+    cout << "Новое уведомление: " << endl << "Спортсмен из " << countryToString(newNotify->country) << " занял " << newNotify->place << " место по " << sportsToString(newNotify->sport) << endl;
+}
+
