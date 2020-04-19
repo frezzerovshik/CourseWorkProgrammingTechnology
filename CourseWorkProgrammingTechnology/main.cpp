@@ -24,10 +24,18 @@ int main(int argc, const char * argv[]) {
         cout << "ОЛИМПИЙСКИЕ ИГРЫ" << endl << "Пройдите инициализацию, выбрав страны и виды спорта, за результатами которых Вы хотите следить: " << endl;
         Games olympicGames; //Объект-симулятор Олимпийских игр, реализует интерфейс Subject (за изменением его состояния возможно наблюдать)
         int numOfObservers{};
+        string charValueOfObserverNum;
         cout << "Скольких наблюдателей Вы хотите объявить?" << endl;
 //Подобная организация ввода позволяет программе гибко обработать случаи, когда пользователь вводит некорректные данные, не приводя к сбоям в работе и вызову исключительных ситуаций
         while (true) {
-            cin >> numOfObservers;
+            cin >> charValueOfObserverNum;
+            try {
+                numOfObservers = stoi(charValueOfObserverNum);
+            }
+            catch (...) {
+                cout << "Пожалуйста, введите числовое значение" << endl;
+                continue;
+            }
             if (numOfObservers <= 0) {
                 cout << "Число наблюдателей не может быть меньшим либо равным 0, повторите ввод" << endl;
                 continue;
@@ -38,10 +46,36 @@ int main(int argc, const char * argv[]) {
         }
         vector<User*> listOfObservers; //User - это класс-симулятор пользователя, принимает и выводит уведомления, так же может отправлять запросы на подписку и отписку от уведомлений
         for (int i = 0; i<numOfObservers; ++i) {
-            cout << "Пожалуйста, введите имя пользователя:" << endl;
-            string username; //Т.к. имя пользователя может быть любого формата и добавлено лишь для удобства пользователя, ограничений на ввод не
-                             //накладывается
-            cin >> username;
+            string username;
+            while (true) {
+                cout << "Пожалуйста, введите имя пользователя:" << endl;
+                cin >> username;
+                if (username == "") {
+                    cout << "Имя пользователя не должно являться пустой строкой, пожалуйста, введите содержательное имя пользователя" << endl;
+                    continue;
+                }
+                else {
+                    if (!listOfObservers.empty()) {
+                        bool nameReserved = false;
+                        for (int j = 0; j < listOfObservers.size(); ++j) {
+                            if (listOfObservers[j]->getUsername() == username) {
+                                nameReserved = true;
+                                break;
+                            }
+                        }
+                        if (nameReserved == true) {
+                            cout << "Имя пользователя занято, пожалуйста, попробуйте другое" << endl;
+                            continue;
+                        }
+                        else {
+                            break;
+                        }
+                    }
+                    else {
+                        break;
+                    }
+                }
+            }
             User* observer = new User(&olympicGames, username);
             listOfObservers.push_back(observer);
         }
@@ -55,6 +89,7 @@ int main(int argc, const char * argv[]) {
             switch (choosenFunction) {
 #pragma mark - Наблюдение за соревнованиями
                 case '1':
+                    cout << "Учтите, если Вы не увидели уведомления о результатах команды, за которую Вы болеете - значит она не вошла в тройку лидеров" << endl;
                     olympicGames.competitions();
                     break;
                 case '2': {
@@ -65,8 +100,17 @@ int main(int argc, const char * argv[]) {
                         cout << i << ": Имя пользователя: " << listOfObservers[i]->getUsername() << endl;
                     cout << "Введите номер пользователя, от чьего лица Вы хотите подписаться на новые уведомления" << endl;
                     int numberOfChoosenUser{};
+                    string charNumber{};
                     while (true) {
-                        cin >> numberOfChoosenUser;
+                        cin >> charNumber;
+                        try {
+                            numberOfChoosenUser = stoi(charNumber);
+                        }
+                        catch (...) {
+                            cout << "Пожалуйста, введите ЧИСЛО" << endl;
+                            continue;
+                        }
+                        cout << charNumber << " было преобразовано в " << numberOfChoosenUser << endl;
                         if (numberOfChoosenUser < 0 || numberOfChoosenUser > listOfObservers.size()-1) {
                             cout << "Пожалуйста, повторите ввод" << endl;
                             continue;
@@ -95,8 +139,7 @@ int main(int argc, const char * argv[]) {
                             break;
                         }
                         case '2': {
-//Метод remind() определен в файле Games.hpp, его назначение - вывести пользователю список имеющихся у него подписок
-                            olympicGames.remind();
+                            olympicGames.printObserversInfo();
                             int number{};
                             while (true) { //Защита ввода
                                 cout << "Введите количество подписок, от которых Вы хотите отказаться: " << endl;
@@ -211,7 +254,7 @@ int main(int argc, const char * argv[]) {
                 }
 #pragma mark - Просмотр информации о подписках
                 case '4':{
-//придумать как это грамотно сделать
+                    olympicGames.printObserversInfo();
                     break;
                 }
                 case '5': {

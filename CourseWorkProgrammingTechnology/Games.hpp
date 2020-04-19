@@ -29,7 +29,7 @@ public:
 	void figureSkiing();
     
     void freeList();
-    void remind();
     unsigned long numberOfObservers();
+    void printObserversInfo();
 };
 

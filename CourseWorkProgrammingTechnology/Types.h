@@ -23,4 +23,3 @@ public:
     Country choosenCountry;
     Sports choosenSport;
 };
-

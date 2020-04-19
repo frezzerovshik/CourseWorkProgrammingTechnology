@@ -271,53 +271,62 @@ void Games::freeList() { //Очистка вектора наблюдателе�
     listOfObservers.clear();
 }
 
-void Games::remind() {
-    cout << "Вы следите за: " << endl;
-    for (int i = 0; i < listOfObservers.size(); ++i) {
-        switch (listOfObservers[i]->choosenCountry) {
-            case Country::Russia:
-                cout << "Россия ";
-                break;
-            case Country::Canada:
-                cout << "Канада ";
-                break;
-            case Country::Finland:
-                cout << "Финляндия";
-                break;
-            case Country::Japan:
-                cout << "Япония ";
-                break;
-            case Country::France:
-                cout << "Франция";
-                break;
-            default:
-                MyException exception;
-                throw exception.wrongCountry();
-                break;
-        }
-        
-        switch (listOfObservers[i]->choosenSport) {
-            case Sports::Biatlon:
-                cout << "Биатлон" << endl;
-                break;
-            case Sports::Skeleton:
-                cout << "Скелетон" << endl;
-                break;
-            case Sports::Skies:
-                cout << "Конькобежный спорт" << endl;
-                break;
-            case Sports::FigureSkiing:
-                cout << "Фигурное катание" << endl;
-                break;
-            default:
-                MyException exception;
-                throw exception.wrongSports();
-                break;
-        }
-        
-    }
-}
-
 unsigned long Games::numberOfObservers() {
     return listOfObservers.size();
 }
+
+void Games::printObserversInfo() {
+    vector<string> differentUsernames;
+    string temp("");
+    for (int i = 0; i < listOfObservers.size(); ++i) {
+        if(listOfObservers[i]->observerObject->getUsername() != temp) {
+            temp = listOfObservers[i]->observerObject->getUsername();
+            differentUsernames.push_back(temp);
+        }
+    }
+    for (int i = 0; i < differentUsernames.size(); ++i){
+        cout << "Имя пользователя: " << differentUsernames[i] << endl;
+        for (int j = 0; j < listOfObservers.size(); ++j) {
+            if (differentUsernames[i] == listOfObservers[j]->observerObject->getUsername()) {
+                cout << "   Страна: ";
+                switch (listOfObservers[j]->choosenCountry) {
+                    case Country::Russia:
+                        cout << "Россия Вид спорта: ";
+                        break;
+                    case Country::Canada:
+                        cout << "Канада Вид спорта: ";
+                        break;
+                    case Country::France:
+                        cout << "Франция Вид спорта: ";
+                        break;
+                    case Country::Finland:
+                        cout << "Финляндия Вид спорта: ";
+                        break;
+                    case Country::Japan:
+                        cout << "Япония Вид спорта: ";
+                        break;
+                    default:
+                        break;
+                }
+                
+                switch (listOfObservers[j]->choosenSport) {
+                    case Sports::Biatlon:
+                        cout << "Биатлон" << endl;
+                        break;
+                    case Sports::Skeleton:
+                        cout << "Скелетон" << endl;
+                        break;
+                    case Sports::Skies:
+                        cout << "Конькобежный спорт" << endl;
+                        break;
+                    case Sports::FigureSkiing:
+                        cout << "Фигурное катание" << endl;
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+    }
+}
+

@@ -24,6 +24,7 @@ User :: User() {
 
 User :: User(Subject* followingSubject, std::string username) {
     char ask {};
+    this->username = username;
     while (true) {
         makeBubble(followingSubject);
         cout << "Повторить действие? 1 - Да 2 - Нет" << endl;
@@ -31,7 +32,6 @@ User :: User(Subject* followingSubject, std::string username) {
         if (ask == '2')
             break;
     }
-    this->username = username;
 }
 
 void User::makeBubble(Subject* followingSubject) {
@@ -127,9 +127,5 @@ string sportsToString(Sports sport) {
 }
 
 void User::update(Notify* newNotify) {
-    cout << "Новое уведомление: " << endl << "Спортсмен из " << countryToString(newNotify->country) << " занял " << newNotify->place << " место по " << sportsToString(newNotify->sport) << endl;
-}
-
-string User::getUsername() {
-    return username;
+    cout << "Новое уведомление: " << endl << "Уважаемый " << this->getUsername() << ", спортсмен из " << countryToString(newNotify->country) << " занял " << newNotify->place << " место по " << sportsToString(newNotify->sport) << endl;
 }

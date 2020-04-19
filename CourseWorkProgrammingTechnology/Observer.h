@@ -7,9 +7,15 @@
 //
 
 #pragma once
+#include <string>
 class Notify;
 
 class Observer {
+protected:
+     std::string username;
 public:
     virtual void update(Notify* newNotify) = 0;
+    std::string getUsername() {
+        return username;
+    }
 };
