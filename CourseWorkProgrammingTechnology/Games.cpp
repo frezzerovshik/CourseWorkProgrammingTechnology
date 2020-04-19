@@ -18,6 +18,7 @@
 
 using namespace std;
 
+#pragma mark - реализация методов протокола Subject
 void Games:: notifyObservers(Notify newNotify) {
     for (int i = 0 ; i < listOfObservers.size(); ++i) {
         if (newNotify.country == listOfObservers[i]->choosenCountry &&
@@ -45,7 +46,7 @@ void Games:: unsubObserver(Country countryKey , Sports sportsKey , Observer* use
             break;
             
         }
-    }//for
+    }
     if (isFound) {
         cout << "Пользователь не найден" << endl;
     }
@@ -68,6 +69,7 @@ void Games:: competitions () {
 	}//while
 }
 
+#pragma mark - Биатлон
 void Games:: biatlon() {
 	vector<Sportsman> validCompetitors;
 	Sportsman temp;
@@ -96,7 +98,7 @@ void Games:: biatlon() {
 	notifyObservers(thirdPlace);
 }
 
-
+#pragma mark - Скелетон
 
 void Games::skeleton() {
 	vector<Sportsman> validCompetitors;
@@ -124,6 +126,8 @@ void Games::skeleton() {
 	notifyObservers(thirdPlace);
 }
 
+#pragma mark - Конькобежный спорт
+
 void Games::skies() {
 	vector<Sportsman> validCompetitors;
 	Sportsman temp;
@@ -149,6 +153,8 @@ void Games::skies() {
 	notifyObservers(secondPlace);
 	notifyObservers(thirdPlace);
 }
+
+#pragma mark - Фигурное катание
 
 void Games::figureSkiing() {
 	vector<Sportsman> validCompetitors;
@@ -253,10 +259,15 @@ Games:: Games() {
     cout << "Считанная из файла конфигурация: " << config << endl;
 }
 Games:: ~Games() {
-    // Пустая реализация
+    for (int i = 0; i < listOfObservers.size(); ++i) {
+        delete listOfObservers[i];
+    }
 }
 
-void Games::freeList() {
+void Games::freeList() { //Очистка вектора наблюдателей
+    for (int i = 0; i < listOfObservers.size(); ++i) {
+        delete listOfObservers[i];
+    }
     listOfObservers.clear();
 }
 

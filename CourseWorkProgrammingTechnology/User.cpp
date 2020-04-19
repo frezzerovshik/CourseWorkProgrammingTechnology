@@ -130,3 +130,6 @@ void User::update(Notify* newNotify) {
     cout << "Новое уведомление: " << endl << "Спортсмен из " << countryToString(newNotify->country) << " занял " << newNotify->place << " место по " << sportsToString(newNotify->sport) << endl;
 }
 
+string User::getUsername() {
+    return username;
+}
