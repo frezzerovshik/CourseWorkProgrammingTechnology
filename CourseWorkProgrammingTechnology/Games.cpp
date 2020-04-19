@@ -183,7 +183,20 @@ void Games::figureSkiing() {
 }
 
 Games:: Games() {
-	ifstream input("/Users/frez2zerovshik/Documents/Универ/Третий курс/6 семестр/CourseWorkProgrammingTechnology/CourseWorkProgrammingTechnology/Sportsman.txt");
+    string path;
+    ifstream input;
+    while (true) {
+        cout << "Введите путь к файлу: " << endl;
+        cin >> path;
+        input.open(path);
+        if (!input.is_open()) {
+            cout << "Файл не обнаружен, попробуйте еще раз" << endl;
+            continue;
+        }
+        else {
+            break;
+        }
+    }
 	string config;
 	Sportsman bubbleGuy;
 	string kindOfSports;
@@ -191,11 +204,7 @@ Games:: Games() {
     MyException exception;
 	getline(input, config);
 	int numberOfSportsmans = atoi(config.c_str());
-
-	if (!input.is_open()) {
-		cout << "Ошибка - невозможно прочитать файл" << endl;
-		return;
-	}
+    
     if (numberOfSportsmans == 0) {
         throw exception.emptyFile();
     }
