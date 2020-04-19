@@ -22,7 +22,7 @@ User :: User() {
     // Пустая реализация
 }
 
-User :: User(Subject* followingSubject) {
+User :: User(Subject* followingSubject, std::string username) {
     char ask {};
     while (true) {
         makeBubble(followingSubject);
@@ -31,6 +31,7 @@ User :: User(Subject* followingSubject) {
         if (ask == '2')
             break;
     }
+    this->username = username;
 }
 
 void User::makeBubble(Subject* followingSubject) {

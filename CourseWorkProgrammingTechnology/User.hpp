@@ -12,10 +12,12 @@
 #include "Country.h"
 
 class User : public Observer {
+    std::string username;
+    User();
 public:
-	User();
-    User(Subject* followingObject);
+    User(Subject* followingObject, std::string username);
     void makeBubble(Subject* followingObject);
     ~User();
     void update(Notify* newNotify);
+    std::string getUsername();
 };

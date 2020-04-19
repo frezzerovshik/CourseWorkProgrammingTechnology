@@ -3,6 +3,7 @@
 #define WRONG_SPORTS 1
 #define WRONG_COUNTRY 2
 #define EMPTY_FILE 3
+#define WRONG_ANSWER 4
 
 typedef int CodeOfError;
 
@@ -11,4 +12,5 @@ public:
     CodeOfError wrongSports();
     CodeOfError wrongCountry();
     CodeOfError emptyFile();
+    CodeOfError wrongAnswer();
 };

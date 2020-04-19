@@ -19,3 +19,7 @@ CodeOfError MyException::wrongCountry() {
 CodeOfError MyException::emptyFile() {
     return EMPTY_FILE;
 }
+
+CodeOfError MyException::wrongAnswer() {
+    return WRONG_ANSWER;
+}

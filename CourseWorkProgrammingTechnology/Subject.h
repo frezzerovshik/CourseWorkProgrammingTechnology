@@ -14,8 +14,9 @@
 #include "Observer.h"
 
 class Subject {
-public:
+protected:
     std::vector<Shell*> listOfObservers;
+public:
     virtual void notifyObservers(Notify newNotify) = 0;
     virtual void registerObserver(Shell* newObserver) = 0;
     virtual void unsubObserver(Country countryKey , Sports sportsKey , Observer* user) = 0;

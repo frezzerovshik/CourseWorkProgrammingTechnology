@@ -255,3 +255,58 @@ Games:: Games() {
 Games:: ~Games() {
     // Пустая реализация
 }
+
+void Games::freeList() {
+    listOfObservers.clear();
+}
+
+void Games::remind() {
+    cout << "Вы следите за: " << endl;
+    for (int i = 0; i < listOfObservers.size(); ++i) {
+        switch (listOfObservers[i]->choosenCountry) {
+            case Country::Russia:
+                cout << "Россия ";
+                break;
+            case Country::Canada:
+                cout << "Канада ";
+                break;
+            case Country::Finland:
+                cout << "Финляндия";
+                break;
+            case Country::Japan:
+                cout << "Япония ";
+                break;
+            case Country::France:
+                cout << "Франция";
+                break;
+            default:
+                MyException exception;
+                throw exception.wrongCountry();
+                break;
+        }
+        
+        switch (listOfObservers[i]->choosenSport) {
+            case Sports::Biatlon:
+                cout << "Биатлон" << endl;
+                break;
+            case Sports::Skeleton:
+                cout << "Скелетон" << endl;
+                break;
+            case Sports::Skies:
+                cout << "Конькобежный спорт" << endl;
+                break;
+            case Sports::FigureSkiing:
+                cout << "Фигурное катание" << endl;
+                break;
+            default:
+                MyException exception;
+                throw exception.wrongSports();
+                break;
+        }
+        
+    }
+}
+
+unsigned long Games::numberOfObservers() {
+    return listOfObservers.size();
+}

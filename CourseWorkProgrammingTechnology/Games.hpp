@@ -27,5 +27,9 @@ public:
 	void skeleton();
 	void skies();
 	void figureSkiing();
+    
+    void freeList();
+    void remind();
+    unsigned long numberOfObservers();
 };
 
