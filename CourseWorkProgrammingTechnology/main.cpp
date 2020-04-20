@@ -303,6 +303,10 @@ int main(int argc, const char * argv[]) {
                 cout << "Вызвано исключение: некорректно введен ответ на вопрос от программы" << endl;
                 break;
             }
+            case WRONG_VALUE: {
+                cout << "Вызвано исключение: ошибка в заполнении файла" << endl << "Формат заполнения файла: " << endl << "ЧислоЗаписей\nЛовкость(число)\nВид спорта(Biatlon or Skeleton or Skies of FigureSkiing)\nУдача(число)\nИмя(строка)\nСила(число)\nВыносливость(число)\nCтрана(Russia or Canada or France or Finland or Japan)"<<endl<<endl<<"!!!Файл заполняется построчно, без пустых строк,в точном соответствии с порядком, указанным выше"<<endl<<"Пример:"<<endl<<"2\n20\nFigureSkiing\n50\nAnton Shatilov\n80\n56\nRussia\n50\nSkies\n30\nMark Johnson\n60\n32\nCanada\n";
+                break;
+            }
             default: {
                 cout << "Вызвано системное исключение" << endl;
                 break;

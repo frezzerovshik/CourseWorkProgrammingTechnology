@@ -4,6 +4,8 @@
 #define WRONG_COUNTRY 2
 #define EMPTY_FILE 3
 #define WRONG_ANSWER 4
+#define WRONG_VALUE 5
+
 
 typedef int CodeOfError;
 
@@ -13,4 +15,5 @@ public:
     CodeOfError wrongCountry();
     CodeOfError emptyFile();
     CodeOfError wrongAnswer();
+    CodeOfError wrongValue();
 };

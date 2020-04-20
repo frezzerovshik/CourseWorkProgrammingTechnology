@@ -23,3 +23,7 @@ CodeOfError MyException::emptyFile() {
 CodeOfError MyException::wrongAnswer() {
     return WRONG_ANSWER;
 }
+
+CodeOfError MyException::wrongValue() {
+    return WRONG_VALUE;
+}

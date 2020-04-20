@@ -55,6 +55,10 @@ void Games:: unsubObserver(Country countryKey , Sports sportsKey , Observer* use
 void Games:: competitions () {
 	bool flag = true;
 	char userAnswer {};
+    if (listOfObservers.empty()) {
+        cout << "Список наблюдателей пуст, пожалуйста, подпишитесь на уведомления о результатах соревнований" << endl;
+        return;
+    }
 	while (flag) {
 		biatlon();
 		skeleton();
@@ -187,7 +191,7 @@ Games:: Games() {
     ifstream input;
     while (true) {
         cout << "Введите путь к файлу: " << endl;
-        cin >> path;
+        getline(cin,path);
         input.open(path);
         if (!input.is_open()) {
             cout << "Файл не обнаружен, попробуйте еще раз" << endl;
@@ -211,13 +215,34 @@ Games:: Games() {
     for (int i = 0;i < numberOfSportsmans;++i) {
         if(!input.eof()) {
             getline(input, bubbleGuy.agility);
+            try {
+                stoi(bubbleGuy.agility);
+            }
+            catch (...) {
+                throw exception.wrongValue();
+            }
             getline(input, kindOfSports);
             getline(input, bubbleGuy.luck);
+            try {
+                stoi(bubbleGuy.luck);
+            }
+            catch (...) {
+                throw exception.wrongValue();
+            }
             getline(input, bubbleGuy.name);
             getline(input, bubbleGuy.stamina);
+            try {
+                stoi(bubbleGuy.stamina);
+            } catch(...) {
+                throw exception.wrongValue();
+            }
             getline(input, bubbleGuy.strenght);
+            try {
+                stoi(bubbleGuy.strenght);
+            } catch (...) {
+                throw exception.wrongValue();
+            }
             getline(input, country);
-
             if (kindOfSports == "Biatlon") {
                 bubbleGuy.kindOfSports = Sports::Biatlon;
             }
@@ -232,6 +257,9 @@ Games:: Games() {
                     else {
                         if (kindOfSports == "FigureSkiing") {
                             bubbleGuy.kindOfSports = Sports::FigureSkiing;
+                        }
+                        else {
+                            throw exception.wrongValue();
                         }
                     }
                 }
@@ -255,6 +283,9 @@ Games:: Games() {
                         else {
                             if (country == "Japan") {
                                 bubbleGuy.whereFrom = Country::Japan;
+                            }
+                            else {
+                                throw exception.wrongValue();
                             }
                         }
                     }
@@ -285,6 +316,10 @@ unsigned long Games::numberOfObservers() {
 }
 
 void Games::printObserversInfo() {
+    if (listOfObservers.empty()) {
+        cout << "Список наблюдателей пуст" << endl;
+        return;
+    }
     vector<string> differentUsernames;
     string temp("");
     for (int i = 0; i < listOfObservers.size(); ++i) {
