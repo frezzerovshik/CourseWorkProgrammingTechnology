@@ -1,0 +1,31 @@
+﻿  Games.cpp
+c:\users\артем\source\repos\project2\project2\games.cpp(23): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\артем\source\repos\project2\project2\games.cpp(37): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\артем\source\repos\project2\project2\games.cpp(85): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\артем\source\repos\project2\project2\games.cpp(86): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\артем\source\repos\project2\project2\games.cpp(114): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\артем\source\repos\project2\project2\games.cpp(115): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\артем\source\repos\project2\project2\games.cpp(141): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\артем\source\repos\project2\project2\games.cpp(142): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\артем\source\repos\project2\project2\games.cpp(168): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\артем\source\repos\project2\project2\games.cpp(169): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\артем\source\repos\project2\project2\games.cpp(300): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\артем\source\repos\project2\project2\games.cpp(306): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\артем\source\repos\project2\project2\games.cpp(323): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\артем\source\repos\project2\project2\games.cpp(329): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\артем\source\repos\project2\project2\games.cpp(331): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\артем\source\repos\project2\project2\games.cpp(376): warning C4018: <: несоответствие типов со знаком и без знака
+  main.cpp
+c:\users\артем\source\repos\project2\project2\main.cpp(60): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\артем\source\repos\project2\project2\main.cpp(99): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\артем\source\repos\project2\project2\main.cpp(114): warning C4018: >: несоответствие типов со знаком и без знака
+c:\users\артем\source\repos\project2\project2\main.cpp(147): warning C4018: >: несоответствие типов со знаком и без знака
+c:\users\артем\source\repos\project2\project2\main.cpp(230): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\артем\source\repos\project2\project2\main.cpp(236): warning C4018: >=: несоответствие типов со знаком и без знака
+c:\users\артем\source\repos\project2\project2\main.cpp(294): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\артем\source\repos\project2\project2\main.cpp(334): warning C4018: >: несоответствие типов со знаком и без знака
+c:\users\артем\source\repos\project2\project2\main.cpp(382): warning C4018: <: несоответствие типов со знаком и без знака
+  MyException.cpp
+  User.cpp
+  Создание кода...
+  Project2.vcxproj -> C:\Users\Артем\source\repos\Project2\Debug\Project2.exe

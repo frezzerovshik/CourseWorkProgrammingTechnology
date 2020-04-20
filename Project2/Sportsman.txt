@@ -1,0 +1,141 @@
+20
+23
+Biatlon
+12
+Ron James
+50
+32
+Canada
+35
+Skeleton
+80
+Ahmed Mudamaghan
+55
+20
+Canada
+55
+Skies
+40
+Mahmud Ali
+70
+25
+Canada
+85
+FigureSkiing
+60
+Andre Sanches
+50
+30
+Canada
+50
+Biatlon
+25
+Andrey Semenov
+60
+40
+Russia
+25
+Skeleton
+95
+Svetlana Egorova
+45
+40
+Russia
+75
+Skies
+30
+Mikhail Sarov
+60
+54
+Russia
+70
+FigureSkiing
+80
+Vitaliy Cemko
+50
+38
+Russia
+30
+Biatlon
+55
+Lois Aber
+50
+73
+France
+31
+Skeleton
+70
+Simon Detie
+56
+44
+France
+60
+Skies
+27
+Batist Jutie
+55
+30
+France
+84
+FigureSkiing
+90
+Serj Legran
+44
+56
+France
+50
+Biatlon
+25
+Timo Antila
+60
+40
+Finland
+25
+Skeleton
+95
+Layne Aeyro
+45
+40
+Finland
+75
+Skies
+30
+Marie Eder
+60
+54
+Finland
+70
+FigureSkiing
+80
+Ikolla Heijke
+50
+38
+Finland
+50
+Biatlon
+25
+Hidenori Isa
+60
+40
+Japan
+25
+Skeleton
+95
+Dzundi Nagai
+45
+40
+Japan
+75
+Skies
+30
+Sari Maeda
+60
+54
+Japan
+70
+FigureSkiing
+80
+Asuka Hatisuka
+50
+38
+Japan
