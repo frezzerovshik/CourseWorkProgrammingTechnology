@@ -17,19 +17,21 @@ public:
     Games();
     ~Games();
     
-	void notifyObservers(Notify newNotify);
+    void notifyObservers(Notify newNotify);
     void unsubObserver(Country countryKey , Sports sportsKey , Observer* user);
     void registerObserver(Shell *newObserver);
     
-	void competitions();
-	
-	void biatlon();
-	void skeleton();
-	void skies();
-	void figureSkiing();
+    void competitions();
+    
+    void biatlon();
+    void skeleton();
+    void skies();
+    void figureSkiing();
     
     void freeList();
     unsigned long numberOfObservers();
     void printObserversInfo();
+
+    void removeUser(Observer* observerObject);
 };
 

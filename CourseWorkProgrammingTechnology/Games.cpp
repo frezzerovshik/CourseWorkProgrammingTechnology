@@ -329,7 +329,7 @@ void Games::printObserversInfo() {
         }
     }
     for (int i = 0; i < differentUsernames.size(); ++i){
-        cout << "Имя пользователя: " << differentUsernames[i] << endl;
+        cout << "Имя пользователя: " << differentUsernames[i] << " Номер пользователя: " << i << endl;
         for (int j = 0; j < listOfObservers.size(); ++j) {
             if (differentUsernames[i] == listOfObservers[j]->observerObject->getUsername()) {
                 cout << "   Страна: ";
@@ -374,3 +374,10 @@ void Games::printObserversInfo() {
     }
 }
 
+void Games::removeUser(Observer* observerObject) {
+    for (int i = 0; i < listOfObservers.size(); ++i) {
+        if (listOfObservers[i]->observerObject == observerObject) {
+            listOfObservers.erase(listOfObservers.begin() + i);
+        }
+    }
+}

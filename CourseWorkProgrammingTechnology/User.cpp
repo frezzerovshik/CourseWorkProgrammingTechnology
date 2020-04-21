@@ -38,7 +38,7 @@ void User::makeBubble(Subject* followingSubject) {
      char choosenCountry{};
      char choosenSport{};
      Shell* bubble = new Shell();
-     
+     MyException exception;
      cout << "Выберите, за какую страну болеть" << endl << "1 - Россия" << endl << "2 - Канада" << endl << "3 - Япония" << endl << "4 - Финляндия" << endl << "5 - Франция" << endl;
      cin >> choosenCountry;
      
@@ -59,6 +59,7 @@ void User::makeBubble(Subject* followingSubject) {
              bubble->choosenCountry = Country::France;
              break;
          default:
+             throw exception.wrongAnswer();
              break;
      }
     
@@ -79,6 +80,7 @@ void User::makeBubble(Subject* followingSubject) {
              bubble->choosenSport = Sports::FigureSkiing;
              break;
          default:
+             throw exception.wrongAnswer();
              break;
      }
      

@@ -19,7 +19,6 @@ using namespace std;
 
 int main(int argc, const char * argv[]) {
     try {
-#pragma mark - Инициализация
 //Программа не будет решать поставленные задачи, если не будет инициализированных наблюдателей, поэтому пользователю необходимо принудительно инициализироваться, объектов-наблюдателей может быть более чем 1 (соблюдение отношения один ко многим)
         cout << "ОЛИМПИЙСКИЕ ИГРЫ" << endl << "Пройдите инициализацию, выбрав страны и виды спорта, за результатами которых Вы хотите следить: " << endl;
         Games olympicGames; //Объект-симулятор Олимпийских игр, реализует интерфейс Subject (за изменением его состояния возможно наблюдать)
@@ -82,18 +81,18 @@ int main(int argc, const char * argv[]) {
         MyException exception;
         char choosenFunction{};
         bool continueCycle = true; // Флаг признака продолжения работы программы
-#pragma mark - Основной цикл начало
+
         while(continueCycle) {
-            cout << "1 - наблюдение за играми" << endl << "2 - добавить страны и виды спорта, за которыми желаете наблюдать" << endl << "3 - отписаться от уведомлений" << endl << "4 - просмотреть информацию о подписках" << endl << "5 - выход" << endl;
+            cout << "1 - наблюдение за играми" << endl << "2 - добавить страны и виды спорта, за которыми желаете наблюдать" << endl << "3 - отписаться от уведомлений" << endl << "4 - просмотреть информацию о подписках" << endl << "5 - добавить пользователя" << endl << "6 - удалить пользователя" << endl << "7 - выход" << endl;
             cin >> choosenFunction;
             switch (choosenFunction) {
-#pragma mark - Наблюдение за соревнованиями
+
                 case '1':
                     cout << "Учтите, если Вы не увидели уведомления о результатах команды, за которую Вы болеете - значит она не вошла в тройку лидеров" << endl;
                     olympicGames.competitions();
                     break;
                 case '2': {
-#pragma mark - Добавление подписок
+
 //Один объект-пользователь может оформлять несколько подписок, но, т.к. предоставляется возможность создавать несколько объектов-наблюдателей,
 //необходимо выбрать от имени какого объекта подписываться на обновления
                     for (int i = 0; i < listOfObservers.size(); ++i)
@@ -126,7 +125,7 @@ int main(int argc, const char * argv[]) {
                     break;
                 }
                 case '3': {
-#pragma mark - Отказ от подписок
+
                     char ask{};
 //Пользователь может оформить слишком большое количество подписок и , если возникает потребность удаления всех подписок, процесс поэлементного
 //ручного удаления может быть очень долгим и утомительным, поэтому, целесообразно предоставить быстрый и удобный способ отказаться от всех подписок
@@ -252,13 +251,117 @@ int main(int argc, const char * argv[]) {
                     }
                     break;
                 }
-#pragma mark - Просмотр информации о подписках
+
                 case '4':{
                     olympicGames.printObserversInfo();
                     break;
                 }
                 case '5': {
-#pragma mark - Выход из программы
+                    int numOfObservers{};
+                    string charValueOfObserverNum;
+                    cout << "Скольких наблюдателей Вы хотите объявить?" << endl;
+                    //Подобная организация ввода позволяет программе гибко обработать случаи, когда пользователь вводит некорректные данные, не приводя к сбоям в работе и вызову исключительных ситуаций
+                    while (true) {
+                        cin >> charValueOfObserverNum;
+                        try {
+                            numOfObservers = stoi(charValueOfObserverNum);
+                        }
+                        catch (...) {
+                            cout << "Пожалуйста, введите числовое значение" << endl;
+                            continue;
+                        }
+                        if (numOfObservers <= 0) {
+                            cout << "Число наблюдателей не может быть меньшим либо равным 0, повторите ввод" << endl;
+                            continue;
+                        }
+                        else {
+                            break;
+                        }
+                    }
+                    for (int i = 0; i < numOfObservers; ++i) {
+                        string username;
+                        while (true) {
+                            cout << "Пожалуйста, введите имя пользователя:" << endl;
+                            cin >> username;
+                            if (username == "") {
+                                cout << "Имя пользователя не должно являться пустой строкой, пожалуйста, введите содержательное имя пользователя" << endl;
+                                continue;
+                            }
+                            else {
+                                if (!listOfObservers.empty()) {
+                                    bool nameReserved = false;
+                                    for (int j = 0; j < listOfObservers.size(); ++j) {
+                                        if (listOfObservers[j]->getUsername() == username) {
+                                            nameReserved = true;
+                                            break;
+                                        }
+                                    }
+                                    if (nameReserved == true) {
+                                        cout << "Имя пользователя занято, пожалуйста, попробуйте другое" << endl;
+                                        continue;
+                                    }
+                                    else {
+                                        break;
+                                    }
+                                }
+                                else {
+                                    break;
+                                }
+                            }
+                        }
+                        User* observer = new User(&olympicGames, username);
+                        listOfObservers.push_back(observer);
+                    }
+                    break;
+                }
+                case '6': {
+                    if (listOfObservers.empty()) {
+                        cout << "Список наблюдателей пуст" << endl;
+                        continue;
+                    }
+                    olympicGames.printObserversInfo();
+                    string stringValueOfNumber;
+                    int number;
+                    cout << "Пожалуйста, введите номер пользователя, которого Вы хотите удалить" << endl;
+                    while (true) {
+                        cin.ignore(1000, '\n');
+                        getline(cin, stringValueOfNumber);
+                        try {
+                            number = stoi(stringValueOfNumber);
+                        }
+                        catch (...) {
+                            cout << "Пожалуйста, введите числовое значение" << endl;
+                            continue;
+                        }
+
+                        if (number < 0 || number > listOfObservers.size() - 1) {
+                            cout << "Пожалуйста, введите корректный номер пользователя" << endl;
+                            continue;
+                        }
+                        else {
+                            break;
+                        }
+                    }
+                    cout << "Вы уверены, что хотите удалить пользователя с именем " << listOfObservers[number]->getUsername() << "? 1 - да 2 - нет " << endl;
+                    char answer{};
+                    cin >> answer;
+                    switch (answer) {
+                    case '1': {
+                        olympicGames.removeUser(*(listOfObservers.begin() + number));
+                        listOfObservers.erase(listOfObservers.begin() + number);
+                        break;
+                        }
+                    case '2': {
+                        break;
+                        }
+                    default: {
+                        throw exception.wrongAnswer();
+                        }
+                    }
+                    break;
+                }
+                case '7': {
+
                     cout << "Вы уверены, что хотите выйти? 1 - да, 2 - нет" << endl;
                     char ask{};
                     cin >> ask;
@@ -278,14 +381,13 @@ int main(int argc, const char * argv[]) {
                     break;
             }
         }
-#pragma mark - Основной цикл конец
 //Удаление всей динамической памяти, выделенной в этом блоке
         for (int i = 0; i < listOfObservers.size(); ++i) {
             delete listOfObservers[i];
         }
     }
     catch (int errorCode) {
-#pragma mark - Блок catch
+
         switch (errorCode) {
             case EMPTY_FILE: {
                 cout << "Вызвано исключение: файл, содержащий информацию о спортсменах пуст" << endl;
