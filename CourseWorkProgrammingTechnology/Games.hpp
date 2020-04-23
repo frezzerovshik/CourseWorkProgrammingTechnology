@@ -9,10 +9,12 @@
 #pragma once
 #include "Observer.h"
 #include "Subject.h"
+#include <fstream>
 #include "Sportsman.hpp"
 
 class Games : public Subject {
     std::vector<Sportsman> competitors;
+    std::ofstream output;
 public:
     Games();
     ~Games();
@@ -33,5 +35,6 @@ public:
     void printObserversInfo();
 
     void removeUser(Observer* observerObject);
+    void writeToFile(std::vector<Sportsman> validCompetitors);
 };
 

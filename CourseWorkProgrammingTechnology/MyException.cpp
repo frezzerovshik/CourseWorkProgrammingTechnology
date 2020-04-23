@@ -27,3 +27,7 @@ CodeOfError MyException::wrongAnswer() {
 CodeOfError MyException::wrongValue() {
     return WRONG_VALUE;
 }
+
+CodeOfError MyException::cannotOpenFile() {
+    return CANNOT_OPEN_FILE;
+}

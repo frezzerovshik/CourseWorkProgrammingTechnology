@@ -8,10 +8,10 @@
 
 #include "Games.hpp"
 #include <iostream>
-#include <fstream>
 #include <string>
 #include <unistd.h>
 #include "MyException.h"
+#include "Convert.hpp"
 
 #define TIME_FOR_SLEEP 15000000 //в микросекундах
 #define NUM_OF_LINES 7
@@ -52,6 +52,46 @@ void Games:: unsubObserver(Country countryKey , Sports sportsKey , Observer* use
     }
 }
 
+void Games::writeToFile(std::vector<Sportsman> validCompetitors) {
+    MyException exception;
+    if (!output.is_open()) {
+        int i = 0;
+        while (!output.is_open()) {
+            i++;
+            output.open("OutputCompetitionData.txt");
+            if (i == 3) {
+                cout << "Возникли сложности с созданием выходного файла, совершено 3 неудачных попытки, продолжать? 1 - да 2 - нет" << endl;
+                char answ{};
+                while (true) {
+                    cin >> answ;
+                    if (answ != '1' && answ != '2') {
+                        cout << "Пожалуйста, введите ответ повторно" << endl;
+                        continue;
+                    }
+                    else {
+                        break;
+                    }
+                }
+                switch (answ) {
+                    case '1':
+                        i = 0;
+                        break;
+                    case '2':
+                        throw exception.cannotOpenFile();
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+    }
+    else {
+        for (int i = 0; i < validCompetitors.size(); ++i) {
+            output << "Спортсмен из " << countryToString(validCompetitors[i].whereFrom) << " занял " << i+1 << "-е место на соревнованиях по " << sportsToString(validCompetitors[i].kindOfSports) << endl;
+        }
+    }
+}
+
 void Games:: competitions () {
 	bool flag = true;
 	char userAnswer {};
@@ -84,11 +124,14 @@ void Games:: biatlon() {
 	for (int i = 0 ; i < validCompetitors.size() - 1 ; ++i) {
 		for (int j = 0; j < validCompetitors.size() - i - 1; ++j) {
 			if (validCompetitors[j].agility > validCompetitors[j + 1].agility &&
-				validCompetitors[j].stamina > validCompetitors[j+1].stamina) {
+				validCompetitors[j].stamina > validCompetitors[j+1].stamina && validCompetitors[j].luck > validCompetitors[j+1].luck) {
 				
 				temp = validCompetitors[j];
 				validCompetitors[j] = validCompetitors[j + 1];
 				validCompetitors[j + 1] = temp;
+                
+                validCompetitors[j].luck += rand();
+                validCompetitors[j+1].luck += rand();
 			}
 		}
 	}
@@ -100,6 +143,7 @@ void Games:: biatlon() {
 	notifyObservers(firstPlace);
 	notifyObservers(secondPlace);
 	notifyObservers(thirdPlace);
+    this->writeToFile(validCompetitors);
 }
 
 #pragma mark - Скелетон
@@ -113,10 +157,12 @@ void Games::skeleton() {
 	}
 	for (int i = 0; i < validCompetitors.size() - 1; ++i) {
 		for (int j = 0; j < validCompetitors.size() - i - 1; ++j) {
-			if (validCompetitors[j].agility > validCompetitors[j + 1].agility) {
+			if (validCompetitors[j].agility > validCompetitors[j + 1].agility && validCompetitors[j].luck > validCompetitors[j+1].luck) {
 				temp = validCompetitors[j];
 				validCompetitors[j] = validCompetitors[j + 1];
 				validCompetitors[j + 1] = temp;
+                validCompetitors[j].luck += rand();
+                validCompetitors[j+1].luck += rand();
 			}
 		}
 	}
@@ -128,6 +174,7 @@ void Games::skeleton() {
 	notifyObservers(firstPlace);
 	notifyObservers(secondPlace);
 	notifyObservers(thirdPlace);
+    this->writeToFile(validCompetitors);
 }
 
 #pragma mark - Конькобежный спорт
@@ -141,10 +188,12 @@ void Games::skies() {
 	}
 	for (int i = 0; i < validCompetitors.size() - 1; ++i) {
 		for (int j = 0; j < validCompetitors.size() - i - 1; ++j) {
-			if ((validCompetitors[j].stamina > validCompetitors[j + 1].stamina)&&(validCompetitors[j].strenght > validCompetitors[j + 1].strenght)) {
+			if ((validCompetitors[j].stamina > validCompetitors[j + 1].stamina)&&(validCompetitors[j].strenght > validCompetitors[j + 1].strenght) && validCompetitors[j].luck > validCompetitors[j+1].luck) {
 				temp = validCompetitors[j];
 				validCompetitors[j] = validCompetitors[j + 1];
 				validCompetitors[j + 1] = temp;
+                validCompetitors[j].luck += rand();
+                validCompetitors[j+1].luck += rand();
 			}
 		}
 	}
@@ -156,6 +205,7 @@ void Games::skies() {
 	notifyObservers(firstPlace);
 	notifyObservers(secondPlace);
 	notifyObservers(thirdPlace);
+    this->writeToFile(validCompetitors);
 }
 
 #pragma mark - Фигурное катание
@@ -169,10 +219,12 @@ void Games::figureSkiing() {
 	}
 	for (int i = 0; i < validCompetitors.size() - 1; ++i) {
 		for (int j = 0; j < validCompetitors.size() - i - 1; ++j) {
-			if ((validCompetitors[j].stamina > validCompetitors[j + 1].stamina) && (validCompetitors[j].agility > validCompetitors[j + 1].agility)) {
+			if ((validCompetitors[j].stamina > validCompetitors[j + 1].stamina) && (validCompetitors[j].agility > validCompetitors[j + 1].agility) && validCompetitors[j].luck > validCompetitors[j+1].luck) {
 				temp = validCompetitors[j];
 				validCompetitors[j] = validCompetitors[j + 1];
 				validCompetitors[j + 1] = temp;
+                validCompetitors[j].luck += rand();
+                validCompetitors[j+1].luck += rand();
 			}
 		}
 	}
@@ -184,9 +236,11 @@ void Games::figureSkiing() {
 	notifyObservers(firstPlace);
 	notifyObservers(secondPlace);
 	notifyObservers(thirdPlace);
+    this->writeToFile(validCompetitors);
 }
 
 Games:: Games() {
+    output.open("OutputCompetitionData.txt");
     string path;
     ifstream input;
     while (true) {
@@ -381,3 +435,5 @@ void Games::removeUser(Observer* observerObject) {
         }
     }
 }
+
+

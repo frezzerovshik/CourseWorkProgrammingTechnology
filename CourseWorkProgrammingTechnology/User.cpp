@@ -11,6 +11,7 @@
 #include <string>
 #include <iostream>
 #include "MyException.h"
+#include "Convert.hpp"
 
 using namespace std;
 
@@ -86,46 +87,6 @@ void User::makeBubble(Subject* followingSubject) {
      
      bubble->observerObject = this;
      followingSubject->registerObserver(bubble);
-}
-
-string countryToString(Country country) {
-	switch (country) {
-	case Country::Russia:
-		return "России";
-	case Country::Japan:
-		return "Японии";
-	case Country::France:
-		return "Франции";
-	case Country::Finland:
-		return "Финляндии";
-	case Country::Canada:
-		return "Канады";
-	default:
-		break;
-	}
-    MyException exception;
-    throw exception.wrongCountry();
-}
-
-string sportsToString(Sports sport) {
-	switch (sport) {
-	case Sports::Biatlon:
-		return "биатлону";
-		break;
-	case Sports::Skeleton:
-		return "скелетону";
-		break;
-	case Sports::Skies:
-		return "конькобежному спорту";
-		break;
-	case Sports::FigureSkiing:
-		return "фигурному катанию";
-		break;
-	default:
-		break;
-	}
-    MyException exception;
-	throw exception.wrongSports();
 }
 
 void User::update(Notify* newNotify) {

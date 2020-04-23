@@ -5,7 +5,7 @@
 #define EMPTY_FILE 3
 #define WRONG_ANSWER 4
 #define WRONG_VALUE 5
-
+#define CANNOT_OPEN_FILE 6
 
 typedef int CodeOfError;
 
@@ -16,4 +16,5 @@ public:
     CodeOfError emptyFile();
     CodeOfError wrongAnswer();
     CodeOfError wrongValue();
+    CodeOfError cannotOpenFile();
 };
