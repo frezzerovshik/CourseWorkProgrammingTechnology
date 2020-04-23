@@ -106,8 +106,10 @@ void Games:: competitions () {
 		figureSkiing();
 		cout << "Продолжать наблюдать за соревнованиями? 1 - Да 2 - Нет" << endl;
 		cin >> userAnswer;
-		if (userAnswer == '1')
+        if (userAnswer == '1') {
+            cout << "Соревнования продолжаются!" << endl;
 			usleep(TIME_FOR_SLEEP);
+        }
 		else
 			flag = false;
 	}//while
